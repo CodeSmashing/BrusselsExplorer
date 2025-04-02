@@ -5,30 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrusselsExplorer</title>
-    <link rel="stylesheet" href="./CSS/mainStylesheet.css">
+    <link rel="stylesheet" href="./CSS/style.css">
 </head>
 
 <body>
     <header>
-
+        <h1>Our Brussels Explorer website</h1>
     </header>
-    <main>
-        <div id="map"></div>
+    <aside class="hidden">
+        <nav>
+            <button class="return">X</button>
+        </nav>
 
-        <aside>
-            <nav>
-                <button class="return">X</button>
-                <section id="favorites">
-                    
-                </section>
-            </nav>
-        </aside>
+        <section id="favourites-container">
+            <h2>Favorieten</h2>
+            <div class="favourite-item"></div>
+            <div class="favourite-item"></div>
+            <div class="favourite-item"></div>
+        </section>
+    </aside>
+    <main>
+        <div id="search-container">
+            <div id="search-input-container">
+                <input type="text" id="search-input" placeholder="Zoekwoord">
+                <button id="search-button">Zoek</button>
+            </div>
+            <select name="sort-menu" id="sort-menu">
+                <optgroup label="Alfabethisch">
+                    <option value="alfa-asc">Alfabethisch ASC</option>
+                    <option value="alfa-desc">Alfabethisch DESC</option>
+                </optgroup>
+            </select>
+            <div id="search-filter-container"></div>
+            <section id="search-results"></section>
+        </div>
     </main>
     <footer>
 
     </footer>
 </body>
 
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const aside = document.querySelector("aside");
+        const asideReturnButton = aside.querySelector(".return");
+
+        asideReturnButton.addEventListener("click", toggleAside);
+
+        function toggleAside() {
+            aside.classList.toggle("hidden");
+        }
+    });
+</script>
 <script type="JavaScript" src="JS/fetchData.mjs"></script>
 <!--
 <script>
