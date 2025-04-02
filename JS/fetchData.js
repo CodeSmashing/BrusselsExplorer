@@ -15,8 +15,17 @@ if(!localStorage.getItem('userData')){
     console.log('Using new data');
 } else{
    userData = JSON.parse(localStorage.getItem('userData'));
+   userData.favorites.forEach(f => {
+        let favCard = document.createElement('div');
+        favCard.className = 'favourite-item';
+        favCard.id = `${f}-Favorite`;
+        favCard.textContent = f;
+
+        document.getElementById('favourites-container').appendChild(favCard);
+   })
+   
    console.log('Using existing data');
-}
+} 
 
 console.log(userData);
 
@@ -74,7 +83,12 @@ function displayResults() {
             tr.appendChild(td.cloneNode(true));
             //favorite button
             const favBtn = document.createElement("button");
-            favBtn.textContent = "Add to favorites";
+            if(userData.favorites.includes(toilet.location)){
+                favBtn.textContent = "Remove favorite";
+            }else{
+                favBtn.textContent = "Add favorite";
+            }
+            
             favBtn.className = 'favorite-button';
             favBtn.id = `${toilet.location}`;
             tr.appendChild(favBtn);
@@ -92,11 +106,25 @@ function setFavButtons(){
         btn.addEventListener('click', () => {
             if(userData.favorites.includes(btn.id)){
                 userData.favorites.splice(userData.favorites.indexOf(btn.id), 1);
+                document.getElementById(`${btn.id}-Favorite`).remove();
+                btn.textContent = "Add favorite";
             }else{
                 userData.favorites.push(btn.id);
+
+                let favCard = document.createElement('div');
+                favCard.className = 'favourite-item';
+                favCard.id = `${btn.id}-Favorite`;
+                favCard.textContent = btn.id;
+
+                document.getElementById('favourites-container').appendChild(favCard);
+                btn.textContent = "Remove favorite";
+
             }
 
             localStorage.setItem('userData', JSON.stringify(userData));
+
+            
+
             console.log(userData.favorites);
         })
       });
