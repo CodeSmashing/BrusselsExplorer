@@ -1,7 +1,7 @@
 'use stict';
 
 let toiletData = [];
-let searchResults = document.getElementById('search-results');
+let searchResults = document.querySelector('tbody');
 
 fetch('https://opendata.brussels.be/api/explore/v2.1/catalog/datasets/toilettes_publiques_vbx/records?limit=50')
     .then(response => response.json())
@@ -25,7 +25,6 @@ fetch('https://opendata.brussels.be/api/explore/v2.1/catalog/datasets/toilettes_
             tr.appendChild(td.cloneNode(true));
 
             searchResults.appendChild(tr);
-
         });
     })
     .catch(error => {
