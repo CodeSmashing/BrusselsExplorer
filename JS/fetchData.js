@@ -1,7 +1,26 @@
 'use stict';
 
+let userData = {};
+
+if(!localStorage.getItem('userData')){
+    userData = {
+        currentLocation: [],
+        favorites: [],
+        language: '',
+        theme: ''
+    };
+
+    localStorage.setItem('userData', JSON.stringify(userData));
+
+    console.log('Using new data');
+} else{
+   userData = JSON.parse(localStorage.getItem('userData'));
+   console.log('Using existing data');
+}
+
+console.log(userData);
+
 let toiletData = [];
-let favoritesArr = [];
 
 let favBtns;
 
@@ -68,16 +87,17 @@ function displayResults() {
 
 function setFavButtons(){
     favBtns = document.getElementsByClassName('favorite-button');
-    let favoritesArr = [];
 
     Array.from(favBtns).forEach(btn => {
         btn.addEventListener('click', () => {
-            if(favoritesArr.includes(btn.id)){
-                favoritesArr.splice(favoritesArr.indexOf(btn.id), 1);
+            if(userData.favorites.includes(btn.id)){
+                userData.favorites.splice(userData.favorites.indexOf(btn.id), 1);
             }else{
-                favoritesArr.push(btn.id);
+                userData.favorites.push(btn.id);
             }
-            console.log(favoritesArr);
+
+            localStorage.setItem('userData', JSON.stringify(userData));
+            console.log(userData.favorites);
         })
       });
 }
