@@ -1,8 +1,7 @@
 'use stict';
 
 let toiletData = [];
-let searchResults = document.querySelector('tbody');
-
+const searchResults = document.querySelector('tbody');
 const urlDatasetPublicToilets = 'https://opendata.brussels.be/api/explore/v2.1/catalog/datasets/toilettes_publiques_vbx/records?limit={LIMIT}';
 const aside = document.querySelector("aside");
 const asideReturnButton = aside.querySelector(".return");

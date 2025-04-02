@@ -132,24 +132,39 @@ main {
 	flex-direction: column;
 }
 
+/* Reset table elements to default display values */
 table {
 	display: table;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+caption {
+	display: table-caption;
 }
 
 thead {
-	display: block;
+	display: table-header-group;
 }
 
 tbody {
-	display: block;
+	display: table-row-group;
 }
 
 tr {
 	display: table-row;
 }
 
+th,
 td {
 	display: table-cell;
+	padding: 0.5em;
+	/* border: 1px solid #ddd; */
+}
+
+th {
+	text-align: start;
+	font-weight: bold;
 }
 
 label,
