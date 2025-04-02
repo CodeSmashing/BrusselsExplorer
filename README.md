@@ -24,6 +24,7 @@ Website maken waar je toiletten in Brussel kan vinden, sorteren, opslaan...
 >   - Events aan elementen koppelen
 >
 >> **Voorbeeld uit code:** Favorites buttons, search button, side menu openen/sluiten, thema en taal aanpassen...
+>---
 >
 >    **Modern JavaScript:**
 >        Gebruik van constanten
