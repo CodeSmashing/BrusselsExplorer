@@ -3,12 +3,12 @@ Dynamic web groepswerk
 
 Website maken waar je toiletten in Brussel kan vinden, sorteren, opslaan...
 
-## Gebruikte datasets: 
-    1. https://opendata.brussels.be/explore/dataset/toilettes_publiques_vbx/information/?disjunctive.status&disjunctive.openinghours&disjunctive.management_en
-    2. https://opendata.brussels.be/explore/dataset/urinoirs-publics-vbx/information/
-    3. https://opendata.brussels.be/explore/dataset/bruxelles_canisite/information/?disjunctive.postalcode&disjunctive.territory_fr
-    4. https://opendata.brussels.be/explore/dataset/bruxelles_parcs_et_jardins/information/
-    5. Google maps API (met datasets van de Brussel API op upgeload)
+>## Gebruikte datasets: 
+>    1. https://opendata.brussels.be/explore/dataset/toilettes_publiques_vbx/information/?disjunctive.status&disjunctive.openinghours&disjunctive.management_en
+>    2. https://opendata.brussels.be/explore/dataset/urinoirs-publics-vbx/information/
+>    3. https://opendata.brussels.be/explore/dataset/bruxelles_canisite/information/?disjunctive.postalcode&disjunctive.territory_fr
+>    4. https://opendata.brussels.be/explore/dataset/bruxelles_parcs_et_jardins/information/
+>    5. Google maps API (met datasets van de Brussel API op upgeload)
 
 ## Technische vereisten
 >**DOM manipulatie:**
@@ -79,8 +79,20 @@ Website maken waar je toiletten in Brussel kan vinden, sorteren, opslaan...
 
 ## Installatie handleiding
 
-## Gebruikte bronnen
+>## Gebruikte bronnen
+>   1. https://opendata.brussels.be
+>   2. https://www.stackoverflow.com
+>   3. https://www.w3schools.com/
+>   4. https://www.google.com
+>   5. https://canvas.ehb.be/courses/38344 - Cursus Dynamic Web
 
-## Taakverdeling
-
+>## Taakverdeling
+>
+>
+>
+>
+>
+>
+>
+>
 
