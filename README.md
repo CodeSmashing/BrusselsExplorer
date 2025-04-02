@@ -11,12 +11,12 @@ Website maken waar je toiletten in Brussel kan vinden, sorteren, opslaan...
     5. Google maps API (met datasets van de Brussel API op upgeload)
 
 ## Technische vereisten
->    **DOM manipulatie:**
->        Elementen selecteren
+>    - **DOM manipulatie:**
+>           - Elementen selecteren
 >            > **Voorbeeld uit code:** User input (search, add to favorites, filters, sorteren...) op te halen.
->        Elementen manipuleren
+>           - Elementen manipuleren
 >            > **Voorbeeld uit code:** Favorites op te slaan, zoekresultaten te tonen, thema aan te passen...
->        Events aan elementen koppelen
+>           - Events aan elementen koppelen
 >            > **Voorbeeld uit code:** Favorites buttons, search button, side menu openen/sluiten, thema en taal aanpassen...
 >    **Modern JavaScript:**
 >        Gebruik van constanten
