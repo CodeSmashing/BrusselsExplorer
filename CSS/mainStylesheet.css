@@ -93,3 +93,6 @@ h6 {
 	font-size-adjust: 0.65;
 	line-height: 1.2;
 }
+#map {
+	height: 100%;
+  }
