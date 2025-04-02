@@ -1,6 +1,10 @@
 'use stict';
 
 let toiletData = [];
+let favoritesArr = [];
+
+let favBtns;
+
 const searchResults = document.querySelector('tbody');
 const urlDatasetPublicToilets = 'https://opendata.brussels.be/api/explore/v2.1/catalog/datasets/toilettes_publiques_vbx/records?limit={LIMIT}';
 const aside = document.querySelector("aside");
@@ -10,6 +14,7 @@ const searchInputField = searchContainer.querySelector("#search-input");
 const searchInputButton = searchContainer.querySelector("#search-button");
 const searchFilterContainer = searchContainer.querySelector("#search-filter-container");
 const filterPrice = searchFilterContainer.querySelector("#filter-price");
+
 // const filterAvailability = searchFilterContainer.querySelector("#filter-availability");
 // const filterOpen = searchFilterContainer.querySelector("filter-open");
 const tableCaption = document.querySelector("table caption");
@@ -48,10 +53,33 @@ function displayResults() {
             //opening hours
             td.textContent = toilet.openinghours;
             tr.appendChild(td.cloneNode(true));
-    
+            //favorite button
+            const favBtn = document.createElement("button");
+            favBtn.textContent = "Add to favorites";
+            favBtn.className = 'favorite-button';
+            favBtn.id = `${toilet.location}`;
+            tr.appendChild(favBtn);
+
             searchResults.appendChild(tr);
         }
     });
+    setFavButtons();
+}
+
+function setFavButtons(){
+    favBtns = document.getElementsByClassName('favorite-button');
+    let favoritesArr = [];
+
+    Array.from(favBtns).forEach(btn => {
+        btn.addEventListener('click', () => {
+            if(favoritesArr.includes(btn.id)){
+                favoritesArr.splice(favoritesArr.indexOf(btn.id), 1);
+            }else{
+                favoritesArr.push(btn.id);
+            }
+            console.log(favoritesArr);
+        })
+      });
 }
 
 function applyFilters(){
