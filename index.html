@@ -14,9 +14,8 @@
     </header>
     <aside class="hidden">
         <nav>
-            <button class="return">X</button>
+            <button class="return">></button>
         </nav>
-
         <section id="favourites-container">
             <h2>Favorieten</h2>
             <div class="favourite-item"></div>
@@ -31,14 +30,28 @@
                 <button id="search-button">Zoek</button>
             </div>
             <select name="sort-menu" id="sort-menu">
-                <optgroup label="Alfabethisch">
-                    <option value="alfa-asc">Alfabethisch ASC</option>
-                    <option value="alfa-desc">Alfabethisch DESC</option>
+                <optgroup label="Alfabetisch">
+                    <option value="alfa-asc">Alfabetisch ASC</option>
+                    <option value="alfa-desc">Alfabetisch DESC</option>
                 </optgroup>
             </select>
-            <div id="search-filter-container"></div>
+            <section id="search-filter-container">
+                <div name="price" class="filter-item">
+                    <input type="checkbox" name="" id="filter-price">
+                    <label for="filter-price">Gratis</label>
+                </div>
+                <!-- <div name="availability" class="filter-item">
+                    <input type="checkbox" name="" id="filter-availability" checked>
+                    <label for="filter-availability">Available</label>
+                </div> -->
+                <!-- <div class="filter-item">
+                    <input type="checkbox" name="" id="filter-open">
+                    <label for="filter-open">Open right now</label>
+                </div> -->
+            </section>
             <section id="search-results">
                 <table>
+                    <caption></caption>
                     <thead>
                         <tr>
                             <td>Locatie</td>
@@ -58,18 +71,6 @@
     </footer>
 </body>
 
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const aside = document.querySelector("aside");
-        const asideReturnButton = aside.querySelector(".return");
-
-        asideReturnButton.addEventListener("click", toggleAside);
-
-        function toggleAside() {
-            aside.classList.toggle("hidden");
-        }
-    });
-</script>
 <script src="./JS/fetchData.js"></script>
 <!--
 <script>
