@@ -215,7 +215,7 @@ input {
 	#search-results {
 		grid-column: 1 / 4;
 		grid-row: 3;
-		display: none;
+		/*display: none;*/
 		padding: 10px;
 		backdrop-filter: contrast(105%);
 	}
