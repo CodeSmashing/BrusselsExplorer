@@ -11,7 +11,7 @@ Website maken waar je toiletten in Brussel kan vinden, sorteren, opslaan...
     5. Google maps API (met datasets van de Brussel API op upgeload)
 
 ## Technische vereisten
->- **DOM manipulatie:**
+>**DOM manipulatie:**
 >
 >   - Elementen selecteren
 >
