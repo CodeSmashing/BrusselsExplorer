@@ -21,6 +21,7 @@
 
 	--background-primary: var(--color-primary);
 	--background-secondary: var(--color-secondary);
+	--background-tertiary: color-mix(in srgb, var(--background-primary), var(--default-shadow));
 	--default-accent: var(--color-accent);
 	--default-text: var(--color-text);
 	--default-shadow: var(--color-shadow);
@@ -128,6 +129,7 @@ aside {
 }
 
 main {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 }
@@ -167,6 +169,15 @@ th {
 	font-weight: bold;
 }
 
+a,
+button,
+input:not([type="checkbox"]),
+select {
+	&:hover {
+		background-color: var(--background-tertiary);
+	}
+}
+
 label,
 a {
 	cursor: pointer;
@@ -175,7 +186,30 @@ a {
 button {
 	cursor: pointer;
 	padding: 10px 20px;
+	background-color: var(--background-primary);
 	border: 2px solid var(--default-border);
+
+	&.return {
+		position: absolute;
+		display: flex;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		top: 25px;
+		right: -35px;
+		justify-content: center;
+		align-items: center;
+		backdrop-filter: contrast(120%);
+		border: 2px solid var(--default-border);
+		color: var(--default-shadow);
+	}
+	
+	&#locate-button {
+		display: flex;
+		margin-block: 50px;
+		margin-inline: auto;
+		width: fit-content;
+	}
 }
 
 input {
@@ -208,22 +242,6 @@ input {
 			transform: scale(.7);
 		}
 	}
-}
-
-.return {
-	position: absolute;
-	display: flex;
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
-	top: 25px;
-	right: -35px;
-	justify-content: center;
-	align-items: center;
-	background-color: var(--background-primary);
-	backdrop-filter: contrast(120%);
-	border: 2px solid var(--default-border);
-	color: var(--default-shadow);
 }
 
 #favourites-container {
@@ -260,7 +278,6 @@ input {
 
 		input,
 		button {
-			background-color: transparent;
 			border: none;
 			backdrop-filter: none;
 		}

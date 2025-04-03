@@ -4,7 +4,10 @@ let userData = {};
 
 if (!localStorage.getItem('userData')) {
     userData = {
-        currentLocation: [],
+        currentLocation: {
+            lat: 0,
+            long: 0
+        },
         favorites: [],
         language: '',
         theme: ''
@@ -42,10 +45,12 @@ const searchInputField = searchContainer.querySelector("#search-input");
 const searchInputButton = searchContainer.querySelector("#search-button");
 const searchFilterContainer = searchContainer.querySelector("#search-filter-container");
 const filterPrice = searchFilterContainer.querySelector("#filter-price");
-
+const locateButton = document.getElementById('locate-button');
 // const filterAvailability = searchFilterContainer.querySelector("#filter-availability");
 // const filterOpen = searchFilterContainer.querySelector("filter-open");
+const sortMenu = searchContainer.querySelector("#sort-menu");
 const tableCaption = document.querySelector("table caption");
+let timeoutId = null;
 const filters = {
     searchTerm: "",
     isFree: filterPrice.checked,
@@ -53,6 +58,8 @@ const filters = {
     // isOpen: false,
 }
 
+locateButton.addEventListener("click", handleInput);
+sortMenu.addEventListener("change", handleInput);
 asideReturnButton.addEventListener("click", toggleAside);
 searchInputField.addEventListener("keydown", handleInput);
 searchInputButton.addEventListener("click", handleInput);
@@ -131,7 +138,7 @@ function setFavButtons() {
 }
 
 function applyFilters() {
-    console.log(filters.searchTerm);
+    console.info(filters.searchTerm);
     toiletData.forEach(toilet => {
         // Disables all toilets that do not match with the users search input, if input is not empty
         tableCaption.textContent = filters.searchTerm;
@@ -157,7 +164,45 @@ function applyFilters() {
     displayResults();
 }
 
+async function calculateDistance(){
+    let toiletLocations = await fetchData(urlDatasetPublicToilets, { limit: 100 });
+    let userLocation = JSON.parse(localStorage.getItem('userData')).currentLocation;
+    
+    toiletLocations.forEach(toilet => {
+
+    });
+}
+
+function getUserLocation() {
+    navigator.geolocation.getCurrentPosition(position => {
+        let lat = position.coords.latitude;
+        let long = position.coords.longitude;
+    
+        userData = JSON.parse(localStorage.getItem('userData'));
+        userData.currentLocation = {lat, long};
+        localStorage.setItem('userData', JSON.stringify(userData));
+    
+        console.info('Location fetched');
+
+        calculateDistance();
+    }, error => {
+        console.error('Location acces denied', error.message);
+        locateButton.textContent = "Location access denied, enable location and try again.";
+
+        timeoutId = setTimeout(() => {
+            locateButton.textContent = "Zoek WC's in mijn buurt";
+            timeoutId = null;
+        }, 2000);
+    }, {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    });
+}
+
 async function handleInput(event) {
+    console.log("our event", event);
+    
     switch (event.target) {
         case searchInputField:
         case searchInputButton:
@@ -179,7 +224,20 @@ async function handleInput(event) {
         // case filterOpen:
         // console.log(event.target.checked);
         // break;
+        case sortMenu:
+            console.log("our selected target: ", event.target.selectedOptions[0]);
+            const selectedValue = event.target.selectedOptions[0].value;
+            if (selectedValue === "alfa-asc") {
+
+            } else if (selectedValue === "alfa-desc") {
+                
+            }
+            break;
+        case locateButton:
+            if (timeoutId === null) getUserLocation();
+            break;
         default:
+            console.warn("We haven't considered that input yet.");
             break;
     }
 }
