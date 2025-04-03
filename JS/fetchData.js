@@ -2,7 +2,7 @@
 
 let userData = {};
 
-if(!localStorage.getItem('userData')){
+if (!localStorage.getItem('userData')) {
     userData = {
         currentLocation: [],
         favorites: [],
@@ -13,19 +13,19 @@ if(!localStorage.getItem('userData')){
     localStorage.setItem('userData', JSON.stringify(userData));
 
     console.log('Using new data');
-} else{
-   userData = JSON.parse(localStorage.getItem('userData'));
-   userData.favorites.forEach(f => {
+} else {
+    userData = JSON.parse(localStorage.getItem('userData'));
+    userData.favorites.forEach(f => {
         let favCard = document.createElement('div');
         favCard.className = 'favourite-item';
         favCard.id = `${f}-Favorite`;
         favCard.textContent = f;
 
         document.getElementById('favourites-container').appendChild(favCard);
-   })
-   
-   console.log('Using existing data');
-} 
+    })
+
+    console.log('Using existing data');
+}
 
 console.log(userData);
 
@@ -83,12 +83,12 @@ function displayResults() {
             tr.appendChild(td.cloneNode(true));
             //favorite button
             const favBtn = document.createElement("button");
-            if(userData.favorites.includes(toilet.location)){
+            if (userData.favorites.includes(toilet.location)) {
                 favBtn.textContent = "Remove favorite";
-            }else{
+            } else {
                 favBtn.textContent = "Add favorite";
             }
-            
+
             favBtn.className = 'favorite-button';
             favBtn.id = `${toilet.location}`;
             tr.appendChild(favBtn);
@@ -99,16 +99,16 @@ function displayResults() {
     setFavButtons();
 }
 
-function setFavButtons(){
+function setFavButtons() {
     favBtns = document.getElementsByClassName('favorite-button');
 
     Array.from(favBtns).forEach(btn => {
         btn.addEventListener('click', () => {
-            if(userData.favorites.includes(btn.id)){
+            if (userData.favorites.includes(btn.id)) {
                 userData.favorites.splice(userData.favorites.indexOf(btn.id), 1);
                 document.getElementById(`${btn.id}-Favorite`).remove();
                 btn.textContent = "Add favorite";
-            }else{
+            } else {
                 userData.favorites.push(btn.id);
 
                 let favCard = document.createElement('div');
@@ -123,21 +123,21 @@ function setFavButtons(){
 
             localStorage.setItem('userData', JSON.stringify(userData));
 
-            
+
 
             console.log(userData.favorites);
         })
-      });
+    });
 }
 
-function applyFilters(){
+function applyFilters() {
     console.log(filters.searchTerm);
     toiletData.forEach(toilet => {
         // Disables all toilets that do not match with the users search input, if input is not empty
         tableCaption.textContent = filters.searchTerm;
 
         if (filters.searchTerm) {
-            if (toilet.location !== null && toilet.location.toLowerCase().includes(filters.searchTerm.toLowerCase())){
+            if (toilet.location !== null && toilet.location.toLowerCase().includes(filters.searchTerm.toLowerCase())) {
                 toilet.isVisible = true;
             } else {
                 toilet.isVisible = false;
@@ -148,7 +148,7 @@ function applyFilters(){
 
         // Disables all paying toilets
         if (filters.isFree) {
-            if (toilet.pricing_en !== 'Free'){
+            if (toilet.pricing_en !== 'Free') {
                 toilet.isVisible = false;
             }
         }
@@ -165,7 +165,7 @@ async function handleInput(event) {
             filters.searchTerm = searchInputField.value.trim();
             searchInputField.value = "";
 
-            toiletData = await fetchData(urlDatasetPublicToilets, {limit: 100});
+            toiletData = await fetchData(urlDatasetPublicToilets, { limit: 100 });
             applyFilters();
             break;
         case filterPrice:
@@ -177,8 +177,8 @@ async function handleInput(event) {
         //     applyFilters();
         //     break;
         // case filterOpen:
-            // console.log(event.target.checked);
-            // break;
+        // console.log(event.target.checked);
+        // break;
         default:
             break;
     }
@@ -187,17 +187,17 @@ async function handleInput(event) {
 async function fetchData(url, parameters) {
     if (url === urlDatasetPublicToilets && parameters.limit) url = url.replace('{LIMIT}', encodeURIComponent(parameters.limit));
 
-	try {
-		const response = await fetch(url);
-		if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();
 
         for (const toilet of data.results) {
             toilet.isVisible = true;
         }
-		return data.results.filter((toilet) => toilet.location !== null);
-	} catch (error) {
-		console.error(`Error while retrieving the data: ${error.message}`);
-		throw error; // Re-throw the error
-	}
+        return data.results.filter((toilet) => toilet.location !== null);
+    } catch (error) {
+        console.error(`Error while retrieving the data: ${error.message}`);
+        throw error; // Re-throw the error
+    }
 }
