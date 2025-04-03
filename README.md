@@ -77,7 +77,15 @@ Website maken waar je toiletten in Brussel kan vinden, sorteren, opslaan...
 >   - Basis CSS
 >   - Gebruiksvriendelijke elementen (verwijderknoppen, icoontjes,...)
 
-## Installatie handleiding
+>## Installatie handleiding
+>   1. Dowload zip file van deze github repository
+>       ![Stap 1](README_IMGS/stap1.png)
+>   2. Extract de zip file in een folder en open deze via VS code
+>       ![Stap 2](README_IMGS/stap2.png)
+>   3. Installeer de live-server plugin in VS code
+>       ![Stap 2](README_IMGS/stap3.png)
+>   4. Start de live-server onderaan je VS code-venster
+>       ![Stap 2](README_IMGS/stap4.png)
 
 >## Gebruikte bronnen
 >   1. https://opendata.brussels.be
@@ -88,12 +96,18 @@ Website maken waar je toiletten in Brussel kan vinden, sorteren, opslaan...
 >   6. https://stackoverflow.com/questions/639695/how-to-convert-latitude-or-longitude-to-meters
 
 >## Taakverdeling
->
->
->
->
->
->
->
+>   ### Bruno
+>       - HTML structure
+>       - JS favorites
+>       - CSS styling
+>       - Search function
+>       - Sorting
+>   ### Niels
+>       - JS calculate distance
+>       - CSS styling
+>       - README
+>       - Filters
+>       - Barcharts
+>       
 >
 
