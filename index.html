@@ -29,9 +29,13 @@
                 <button id="search-button">Zoek</button>
             </div>
             <select name="sort-menu" id="sort-menu">
-                <optgroup label="Alfabetisch">
+                <optgroup label="Alphabetical">
                     <option value="alfa-asc">Alfabetisch ASC</option>
                     <option value="alfa-desc">Alfabetisch DESC</option>
+                </optgroup>
+                <optgroup label="Distance">
+                    <option value="distance-asc">Distance ASC</option>
+                    <option value="distance-desc">Distance DESC</option>
                 </optgroup>
             </select>
             <section id="search-filter-container">
@@ -39,14 +43,16 @@
                     <input type="checkbox" name="" id="filter-price">
                     <label for="filter-price">Gratis</label>
                 </div>
-                <!-- <div name="availability" class="filter-item">
-                    <input type="checkbox" name="" id="filter-availability" checked>
-                    <label for="filter-availability">Available</label>
-                </div> -->
-                <!-- <div class="filter-item">
-                    <input type="checkbox" name="" id="filter-open">
-                    <label for="filter-open">Open right now</label>
-                </div> -->
+            </section>
+            <section id="distance-bar-chart-container">
+                <table>
+                    <caption>Afstand-grafiek</caption>
+                    <tbody>
+                        <table class="distance-bar-chart">
+
+                        </table>
+                    </tbody>
+                </table>
             </section>
             <section id="search-results">
                 <table>
@@ -56,10 +62,11 @@
                             <th>Locatie</th>
                             <th>Prijs</th>
                             <th>Openingsuren</th>
+                            <th>Distance</th>
+                            <th>Favourite</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    </tbody>
+                    <tbody></tbody>
                 </table>
             </section>
         </div>

@@ -85,6 +85,7 @@ Website maken waar je toiletten in Brussel kan vinden, sorteren, opslaan...
 >   3. https://www.w3schools.com/
 >   4. https://www.google.com
 >   5. https://canvas.ehb.be/courses/38344 - Cursus Dynamic Web
+>   6. https://stackoverflow.com/questions/639695/how-to-convert-latitude-or-longitude-to-meters
 
 >## Taakverdeling
 >
