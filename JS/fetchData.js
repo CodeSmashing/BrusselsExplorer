@@ -80,6 +80,7 @@ function updateFavourites(toilet, favBtn = null) {
 function displayResults() {
     // Empties the previous results
     searchResultsTBody.replaceChildren();
+    favouritesContainer.replaceChildren(favouritesContainer.querySelector("h2"));
 
     // Creates a table row for each result in the resultsArray and appends it to the DOM
     toiletData.forEach(toilet => {
