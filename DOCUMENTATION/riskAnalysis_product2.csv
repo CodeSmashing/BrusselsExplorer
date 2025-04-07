@@ -1,0 +1,5 @@
+Risico-analyse product “taal veranderen als eindgebruiker”,,,,
+Risico,Realisatiekans,Impact,Totaal risico,Beschermende maatregelen
+Incorrecte vertaling van Nederlands naar Frans en andersom,2,2,4,"Gebruik maken van professionele en geavanceerde vertaalsoftware zoals Sonix, Text United of Pairaphrase."
+Geen taal optie hebben dat past voor de gebruiker,2,3,6,"Gebruik maken van browserintellingen of IP-detectie om een standaardtaal te suggereren, met de mogelijkheid om deze handmatig aan te passen."
+Slechte gebruikerinterface waardoor het onduidelijk is waar of hoe dat de taal aangepast kan worden,1,2,2,Actief onderzoek doen naar wat een “goede” interface is en polsen bij een doelpubliek

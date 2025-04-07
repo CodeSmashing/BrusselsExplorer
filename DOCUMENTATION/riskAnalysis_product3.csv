@@ -1,0 +1,5 @@
+Risico-analyse product “gebruikersvoorkeuren opslaan in localStorage”,,,,
+Risico,Realisatiekans,Impact,Totaal risico,Beschermende maatregelen
+Er is nog geen data om op te slagen. Null error,3,2,6,Default values voorzien
+Laden duurt te lang,1,2,2,Code optimizen aan de hand van ascychrone functies. Het aantal door de gebruiker opgeslagen data te beperken.
+Foute data word geladen,1,3,3,Een check voorzien die ervoor zorgt dat de meest recente en correcte data word opgeslagen en geladen.

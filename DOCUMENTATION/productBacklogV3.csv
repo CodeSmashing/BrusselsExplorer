@@ -1,0 +1,27 @@
+TaskID,"Status (open, ongoing, done)",User Story ID,Acceptance Criteria,Taakomschrijving,Prioriteit,Story Points,Technische instructies,Commentaar
+1,ongoing,Dichtstbijzijnde publieke WC of urinoir in en rond mijn locatie vinden,Locatie gegevens opvragen,Functie schrijven om via de Geolocatie API van HTML5 de gebruiker te vragen voor hun locatie,Nice,2,,
+2,open,,Bijhouden van opgegeven locatie gegevens,Bij de functie die via de Geolocation API vraagt voor locatie gegevens de localStorage aanpassen om de nieuwe gegevens te bewaren als er geldige gevens geven zijn,Need,1,,
+3,ongoing,,Zoek functie voor WC’s in mijn buurt,Knop maken voor het oproepen van de functie die via de Geolocatie API de gebruiker vraagt voor hun locatie,Nice,1,,
+4,ongoing,,Zoekbalk functionaliteit,Tekstveld maken voor straat- of locatienaam,Need,1,Tekstsveld trimmen bij gebruik van de value,
+5,open,,,Onzichtbare checkbox maken om honden WC's en parken toe te laten in de zoekresultaten,Nice,1,,
+6,ongoing,,,Output sectie maken onder de zoekbalk voor de zoekresultaten,Need,1,,
+7,open,,,Google Maps map onder de zoekresultaten sectie toevoegen,Nice,2,,
+8,ongoing,,,"Functie schrijven om te zoeken tussen al onze datasets naar WC's of urinoirs in de locatie en er rond via de area search functionaliteit van de Google Maps API met een standaard afstand van 1 km.
+Als een locatie gevonden is en enkele rondligende locaties zijn gegeven worden deze netjes gelijst in een dropdown menu vlak onderaan de zoekbalk.
+Als geen enkeel optie in de dropdown menu geklikt wordt dan wordt deze lijst ook zichtbaar in de zoekresultaten sectie.
+De hoofdzakelijke locatie waarnaar gezocht werd, gekozen door erop te klikken in de dropdown, zal een rode cirkel krijgen op de Google Maps map met dezelfde standaard afstand als dat gebruikt werd voor het zoeken naar de rondliggende locaties.
+Elke gegeven rondligende locatie zal gemarkeerd worden via een Google Maps location marker.",Need,3,Foutmelding geven als er geen locaties gevonden konden worden,
+9,ongoing,,Sorteer dropdown menu,"Dropdown menu maken met opties voor het sorteren van de zoekresultaten (alfabethisch ASC, alfabethisch DESC)",Nice,1,,
+10,open,,,Functie schrijven om de zoekresultaten te sorteren op basis van de geselcteerde optie van de sorteer dorpdown menu,Nice,2,,
+11,ongoing,,Filter opties,Checkbox veld voor het filteren op type,Nice,1,,
+12,open,,,Checkbox veld voor het filteren op status,Nice,1,,
+13,done,,,Checkbox veld voor het filteren op prijs,Nice,1,,
+14,done,,,Functie schrijven om de zoekresultaten te filteren op basis van de aangevinkte filter checkboxen,Nice,2,,
+15,open,Taal veranderen als eindgebruiker,Taal van de website veranderen naar een gebruiker gekozen alternatief,Knop maken voor het veranderen van de taal van de gehele website naar het Nederlands,Nice,1,,
+16,open,,,Knop maken voor het veranderen van de taal van de gehele website naar het Frans,Nice,1,,
+17,open,,,Functie maken voor het effectief veranderen van de taal van de gehele website naar de gekozen taal,Nice,3,,
+18,ongoing,Gebruikersvoorkeuren opslaan in localStorage en toepassen,Bij het inladen van eenders welke pagina user preference toepassen,"Luisteren via een eventlistener naar de event ""DOMContentLoaded"" om een functie aan te roepen om te kijken naar enige gebruikers voorkeuren in de lokale browser opslag onder ""userPreferences"" om deze toe te passen",Nice,1,,
+19,ongoing,,,"Functie schrijven om te kijken naar enige gebruikers voorkeuren in de lokale browser opslag onder ""userPreferences"" om deze toe te passen",Nice,2,,
+20,open,,"Gekozen thema, locatie, favorieten en taal opslaan in de lokale browser opslag","Functie schrijven om veranderingen aan het gekozen thema, de gegeven gebruikers locatie, de aangeduide favorieten locaties en de aangegeven voorkeurstaal op te slaan in de lokale browser opslag onder ""userPreferences""",Nice,2,,
+21,open,I'm feeling dangerous,Aanpassen zoekresultaten,Knop maken voor het aanvinken van de onzichtbare checkbox om honden WC's en parken toe te laten in de zoekresultaten,Nice,1,,
+22,ongoing,Duidelijk en gedetaileerde user stories schrijven voor klaar en duidelijke doelen,"Volledige en complete notering van user stories, hun criteria en relevante risico's",Lees acceptance criteria,Need,2,,

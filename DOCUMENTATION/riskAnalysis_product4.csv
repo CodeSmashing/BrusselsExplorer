@@ -1,0 +1,9 @@
+Risico-analyse product “relatieve afstand en tijdsduur weten”,,,,
+Risico,Realisatiekans,Impact,Totaal risico,Beschermende maatregelen
+Ongeldige gebruikers locatie gegevens zijn mee gegeven,1,2,2,"Bij het gebruik maken van de Geolocation API van HTML5 is het ""risico"" laag als de gebruiker zijn locatie gegevens deelt.
+We kunnen alsnog controleren wat de gegeven locatie details zijn en als deze in een correcte formaat zitten.
+Als dit niet zo is moeten we een error tonen in de console en een pop-up laten zien aan de eindgebruiker ter info.
+Het is dus vanzelfsprekend dat we verder niets kunnen doen dan hopen dat de Geolocation API goed werkt en dat de eindgebruiker correcte info deelt"
+Slechte berekening relatieve afstand tussen de gebruiker en de locaties,3,1,3,
+Slechte berekening relatieve tijdsduur van wandeling,3,1,3,
+Slechte weergaven van berekeningen in de locatie tabel,1,2,2,

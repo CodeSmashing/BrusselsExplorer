@@ -1,0 +1,6 @@
+Risico-analyse product “dichtsbijzijnde publieke WC of urinoir in en rond Brussel vinden”,,,,
+Risico,Realisatiekans,Impact,Totaal risico,Beschermende maatregelen
+Geen toegang tot de online datasets van opendata.brussels,1,3,3,Op voorhand een kopie aanmaken van de meest gebruikte datasets waarvan we gebruik maken voor toegang zonder een internet verbinding
+De website kan geen gebruik maken van de locatie informatie van de gebruiker,1,2,2,Als de gegeven gegevens onleesbaar of onbruikbaar zijn moeten we de gebruiker toelaten om te zoeken op basis van zoektermen en filters in de homepagina
+Slechte gebruikersinterface voor het zoeken naar de dichtsbijzijnde publieke WC of urinoir,2,1,2,Actief onderzoek doen naar wat een “goede” interface is en polsen bij een doelpubliek
+Incompatibiliteit met bepaalde browsers of apparaten,2,3,6,Markt onderzoek doen naar de plaatsen waar ons product het meest gebruikt zal worden en van daaruit versies maken die compatibel zijn met de relevante software / hardware om dan steeds verder uit te breiden naar software / hardware die steeds minder waarschijnlijk gebruik zullen maken van ons product (tot een zekere limeit van plausibiliteit)

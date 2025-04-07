@@ -1,0 +1,4 @@
+Risico-analyse product “Im feeling dangerous”,,,,
+Risico,Realisatiekans,Impact,Totaal risico,Beschermende maatregelen
+Gebruiker denk niet dat het een grap is,2,3,6,Disclaimer voorzien dat het een grapfunctie is
+Gebruiker weet wiet wat dit betekend,2,2,4,Duidelijke uitleg voorzien met bijvoorbeeld een on-hover text box
