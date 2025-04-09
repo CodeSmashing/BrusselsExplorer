@@ -1,5 +1,6 @@
 "use strict";
 
+import { userData, toiletData } from "./init.js";
 import { createFavCard } from "./favouritesManager.js";
 
 const favouritesContainer = document.querySelector("#favourites-container");
@@ -78,17 +79,17 @@ export function getUserLocation(timeoutId) {
 
 // Check if there is local data available, if not, create new data
 export function setUserData() {
-	let userData = {};
+	let userData = {
+		currentLocation: {
+			lat: 0,
+			long: 0,
+		},
+		favourites: [],
+		language: "nd",
+		theme: "dark",
+	};
+
 	if (!localStorage.getItem("userData")) {
-		userData = {
-			currentLocation: {
-				lat: 0,
-				long: 0,
-			},
-			favourites: [],
-			language: "nd",
-			theme: "dark",
-		};
 		localStorage.setItem("userData", JSON.stringify(userData));
 		console.log("Using new data");
 	} else {
@@ -98,13 +99,18 @@ export function setUserData() {
 	return userData;
 }
 
+export function updateUserData() {
+	// userData.favourites = JSON.parse(localStorage.getItem("userData")).favourites;
+	localStorage.setItem("userData", JSON.stringify(userData));
+}
+
 // Calculates the distance of every toilet and puts them into an array sorted from low to high
 function calculateDistance(userLocation) {
-	toiletData.forEach((toilet) => {
+	toiletData.array.forEach((toilet) => {
 		toilet.distance = parseInt(measure(userLocation.lat, userLocation.long, toilet.geo_point_2d.lat, toilet.geo_point_2d.lon));
 	});
 
-	toiletData.sort(function ({ distance: a }, { distance: b }) {
+	toiletData.array.sort(function ({ distance: a }, { distance: b }) {
 		return a - b;
 	});
 }

@@ -1,9 +1,8 @@
 "use strict";
 
-import { fetchData, setUserData, getUserLocation } from "./utils.js";
+import { fetchData, getUserLocation, updateUserData } from "./utils.js";
 import { updateFavourites } from "./favouritesManager.js";
-
-export let toiletData = [];
+import { userData, toiletData } from "./init.js";
 
 export default function main() {
 	const urlDatasetPublicToilets = "https://opendata.brussels.be/api/explore/v2.1/catalog/datasets/toilettes_publiques_vbx/records?limit={LIMIT}";
@@ -22,7 +21,6 @@ export default function main() {
 		searchTerm: "",
 		isFree: filterPrice.checked,
 	};
-	let userData = setUserData();
 	let timeoutId = null;
 
 	// After fetching the user data:
@@ -31,11 +29,113 @@ export default function main() {
 	});
 
 	// Add eventlisteners to all inputs on the site
-	locateButton.addEventListener("click", handleInput);
-	sortMenu.addEventListener("change", handleInput);
-	searchInputField.addEventListener("keydown", handleInput);
-	searchInputButton.addEventListener("click", handleInput);
-	filterPrice.addEventListener("change", handleInput);
+	locateButton.addEventListener("click", handleLocateInput);
+	sortMenu.addEventListener("change", handleSortInput);
+	searchInputField.addEventListener("keydown", handleSearchInput);
+	searchInputButton.addEventListener("click", handleSearchInput);
+	searchFilterContainer.addEventListener("change", handleFilterInput)
+	searchResultsTBody.addEventListener("click", handleFavouriteButtonClick);
+	favouritesContainer.addEventListener("click", handleRemoveButtonClick);
+
+	// Fetches the data from the API
+	// and displays the results
+	async function handleSearchInput(event) {
+		if (event.target === searchInputField && event.key !== "Enter") return;
+		filters.searchTerm = searchInputField.value.trim();
+		searchInputField.value = "";
+
+		toiletData.array = await fetchData(urlDatasetPublicToilets, { limit: 20 });
+
+		applyFilters();
+		displayResults();
+		barChartResults.style.display = "none";
+		searchResultsSection.style.display = "block";
+		searchFilterContainer.style.display = "block";
+	}
+
+	// Handles the sort input
+	// and sorts the toiletData array
+	function handleSortInput(event) {
+		const selectedValue = event.target.selectedOptions[0].value;
+		if (!Array.isArray(toiletData.array) || toiletData.array.length === 0) {
+			console.warn("No toilet data to sort yet. Please search for data first.");
+			return;
+		}
+
+		if (selectedValue === "alfa-asc") {
+			toiletData.array.sort((a, b) => a.location.localeCompare(b.location, undefined, { sensitivity: "base" }));
+			displayResults();
+		} else if (selectedValue === "alfa-desc") {
+			toiletData.array.sort((a, b) => b.location.localeCompare(a.location, undefined, { sensitivity: "base" }));
+			displayResults();
+		} else if (selectedValue === "distance-asc") {
+			toiletData.array.sort((a, b) => a.distance - b.distance);
+			displayResults();
+		} else if (selectedValue === "distance-desc") {
+			toiletData.array.sort((a, b) => b.distance - a.distance);
+			displayResults();
+		}
+	}
+
+	// Handles the filter inputs
+	// and updates the filters object
+	function handleFilterInput(event) {
+		const filterTarget = event.target;
+
+		if (filterTarget.tagName !== "INPUT") return;
+		switch (filterTarget.id) {
+			case "filter-price":
+				filters.isFree = filterTarget.checked;
+		
+				applyFilters();
+				displayResults();
+				break;
+			default:
+				console.warn("Unhandled filter type.");
+				break;
+		}
+	}
+
+	// Adds or removes a toilet from the favourites container
+	// and updates the userData
+	function handleFavouriteButtonClick(event) {
+		if (event.target.tagName === "BUTTON") {
+			const btn = event.target;
+			const toiletId = btn.dataset.for.replace("favourite-location-card-", "");
+			const toilet = toiletData.array.find((toilet) => toilet.id === toiletId);
+
+			if (!toilet.card) return;
+			if (userData.favourites.find((favourite) => favourite.id === toilet.id)) {
+				// Remove
+				userData.favourites.splice(userData.favourites.indexOf(toilet), 1);
+				btn.classList.remove("favourited");
+				favouritesContainer.removeChild(toilet.card);
+			} else {
+				// Add
+				userData.favourites.push(toilet);
+				btn.classList.add("favourited");
+				favouritesContainer.appendChild(toilet.card);
+			}
+
+			updateUserData();
+		}
+	}
+
+	// Removes the toilet from the favourites
+	// and updates the userData
+	function handleRemoveButtonClick(event) {
+		if (event.target.tagName === "BUTTON") {
+			const btn = event.target;
+			const toiletId = btn.parentElement.id.replace("favourite-location-card-", "");
+			const toilet = toiletData.array.find((toilet) => toilet.id === toiletId);
+			const toiletButton = searchResultsTBody.querySelector(`button[data-for='favourite-location-card-${toilet.id}']`);
+
+			userData.favourites.splice(userData.favourites.indexOf(toilet), 1);
+			if (toiletButton) toiletButton.classList.remove("favourited");
+			favouritesContainer.removeChild(toilet.card);
+			updateUserData();
+		}
+	}
 
 	// Displays the filtered results in a table
 	function displayResults() {
@@ -44,7 +144,7 @@ export default function main() {
 		favouritesContainer.replaceChildren(favouritesContainer.querySelector("h2"));
 
 		// Creates a table row for each result in the resultsArray and appends it to the DOM
-		toiletData.forEach((toilet) => {
+		toiletData.array.forEach((toilet) => {
 			if (toilet.isVisible) {
 				let tr = document.createElement("tr");
 				let td = document.createElement("td");
@@ -70,7 +170,11 @@ export default function main() {
 				tr.appendChild(td.cloneNode(true));
 
 				// favourite button
-				const favBtn = createFavButton(toilet.id);
+				const favBtn = document.createElement("button");
+				favBtn.textContent = "Favourite";
+				favBtn.className = "favourite-button";
+				favBtn.dataset.for = `favourite-location-card-${toilet.id}`;
+
 				td = td.cloneNode(true);
 				td.textContent = "";
 				td.appendChild(favBtn);
@@ -84,35 +188,6 @@ export default function main() {
 		});
 	}
 
-	// Adds the favorite button to each entry in the search result and makes sure they are displayed correctly if they are already favorited
-	function createFavButton(id) {
-		const btn = document.createElement("button");
-		btn.textContent = "Favourite";
-		btn.className = "favourite-button";
-		btn.dataset.for = `favourite-location-card-${id}`;
-		btn.addEventListener("click", () => {
-			const toiletId = btn.dataset.for.replace("favourite-location-card-", "");
-			const toilet = toiletData.find((toilet) => toilet.id === toiletId);
-
-			if (!toilet.card) return;
-			let userData = JSON.parse(localStorage.getItem("userData"));
-
-			if (userData.favourites.find((favourite) => favourite.id === toilet.id)) {
-				// Remove
-				userData.favourites.splice(userData.favourites.indexOf(toilet), 1);
-				btn.classList.remove("favourited");
-				favouritesContainer.removeChild(toilet.card);
-			} else {
-				// Add
-				userData.favourites.push(toilet);
-				btn.classList.add("favourited");
-				favouritesContainer.appendChild(toilet.card);
-			}
-
-			localStorage.setItem("userData", JSON.stringify(userData));
-		});
-		return btn;
-	}
 
 	function diplayBarCharts() {
 		//Makes that only the bar chart is shown
@@ -123,14 +198,14 @@ export default function main() {
 		//Find the max distance of a toilet so we can scale the bars properly
 		let maxDistance = Math.max.apply(
 			Math,
-			toiletData.map(function (o) {
+			toiletData.array.map(function (o) {
 				return o.distance;
 			})
 		);
 		let cellCount = maxDistance / 100;
 
 		//Creates a table row where only a part of the cells are visible based on the value of the distance
-		toiletData.forEach((toilet) => {
+		toiletData.array.forEach((toilet) => {
 			let toiletTable = document.createElement("table");
 			toiletTable.id = `${toilet.id}-table`;
 			toiletTable.className = "distance-bar-chart";
@@ -164,7 +239,7 @@ export default function main() {
 
 	// Applies filters on our data fetched from the api
 	function applyFilters() {
-		toiletData.forEach((toilet) => {
+		toiletData.array.forEach((toilet) => {
 			// Disables all toilets that do not match with the users search input, if input is not empty
 			if (filters.searchTerm) {
 				if (toilet.location !== null && toilet.location.toLowerCase().includes(filters.searchTerm.toLowerCase())) {
@@ -185,58 +260,10 @@ export default function main() {
 		});
 	}
 
-	// Handles all the input
-	async function handleInput(event) {
-		console.log("Our handleInput event: ", event);
-
-		switch (event.target) {
-			case searchInputField:
-			case searchInputButton:
-				if (event.target === searchInputField && event.key !== "Enter") return;
-				filters.searchTerm = searchInputField.value.trim();
-				searchInputField.value = "";
-
-				toiletData = await fetchData(urlDatasetPublicToilets, { limit: 100 });
-
-				applyFilters();
-				displayResults();
-				barChartResults.style.display = "none";
-				searchResultsSection.style.display = "block";
-				searchFilterContainer.style.display = "block";
-				break;
-			case filterPrice:
-				filters.isFree = event.target.checked ? true : false;
-				applyFilters();
-				displayResults();
-				break;
-			case sortMenu:
-				const selectedValue = event.target.selectedOptions[0].value;
-
-				if (!Array.isArray(toiletData) || toiletData.length === 0) return;
-				if (selectedValue === "alfa-asc") {
-					toiletData.sort((a, b) => a.location.localeCompare(b.location, undefined, { sensitivity: "base" }));
-					displayResults();
-				} else if (selectedValue === "alfa-desc") {
-					toiletData.sort((a, b) => b.location.localeCompare(a.location, undefined, { sensitivity: "base" }));
-					displayResults();
-				} else if (selectedValue === "distance-asc") {
-					toiletData.sort((a, b) => a.distance - b.distance);
-					displayResults();
-				} else if (selectedValue === "distance-desc") {
-					toiletData.sort((a, b) => b.distance - a.distance);
-					displayResults();
-				} else {
-					console.warn("No toilet data to sort yet. Please search for data first.");
-				}
-				break;
-			case locateButton:
-				toiletData = await fetchData(urlDatasetPublicToilets, { limit: 100 });
-				if (timeoutId === null) getUserLocation(timeoutId);
-				diplayBarCharts();
-				break;
-			default:
-				console.warn("Unhandled input type.");
-				break;
-		}
+	// Fetches the users location and updates the userData
+	async function handleLocateInput() {
+		toiletData.array = await fetchData(urlDatasetPublicToilets, { limit: 20 });
+		if (timeoutId === null) getUserLocation(timeoutId);
+		diplayBarCharts();
 	}
 }

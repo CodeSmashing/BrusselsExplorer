@@ -1,7 +1,5 @@
 "use strict";
 
-import { toiletData } from "./js.js";
-
 const searchContainer = document.querySelector("#search-container");
 const searchResultsSection = searchContainer.querySelector("#search-results");
 const searchResultsTBody = searchResultsSection.querySelector("tbody");
@@ -37,16 +35,6 @@ export function createFavCard(toilet) {
 	cardTitle.innerHTML = toilet.location;
 	removeBtn.textContent = "Verwijder";
 	removeBtn.className = "remove-button";
-
-	removeBtn.addEventListener("click", () => {
-		const btn = searchResultsTBody.querySelector(`button[data-for='favourite-location-card-${toilet.id}']`);
-
-		favouritesContainer.removeChild(card);
-		let userData = JSON.parse(localStorage.getItem("userData"));
-		userData.favourites.splice(userData.favourites.indexOf(toilet), 1);
-		if (btn) btn.classList.remove("favourited");
-		localStorage.setItem("userData", JSON.stringify(userData));
-	});
 
 	card.appendChild(cardTitle);
 	card.appendChild(removeBtn);
