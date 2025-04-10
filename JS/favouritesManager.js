@@ -1,9 +1,7 @@
 "use strict";
 
-const searchContainer = document.querySelector("#search-container");
-const searchResultsSection = searchContainer.querySelector("#search-results");
-const searchResultsTBody = searchResultsSection.querySelector("tbody");
-const favouritesContainer = document.querySelector("#favourites-container");
+import { searchResultsTBody, favouritesContainer, toiletData, userData } from "./init.js";
+import { updateUserData } from "./utils.js";
 
 // Updates the favorites
 export function updateFavourites(toilet, favBtn = null) {
