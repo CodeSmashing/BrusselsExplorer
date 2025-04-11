@@ -1,7 +1,6 @@
 "use strict";
 
-import { searchResultsTBody, favouritesContainer, toiletData, userData } from "./init.js";
-import { updateUserData } from "./utils.js";
+import { searchResultsTBody, favouritesContainer } from "./init.js";
 
 // Updates the favorites
 export function updateFavourites(toilet, favBtn = null) {

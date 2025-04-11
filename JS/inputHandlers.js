@@ -1,8 +1,8 @@
 "use strict";
 
-import { barChartResults, searchInputField, searchFilterContainer, filters, toiletData, urlDatasetPublicToilets, searchResultsSection, locateButton } from "./init.js";
+import { barChartResults, searchInputField, searchFilterContainer, filters, toiletData, urlDatasetPublicToilets, searchResultsSection, locateButton, userData, favouritesContainer, searchResultsTBody } from "./init.js";
 import { displayResults, displayBarCharts } from "./resultsDisplay.js";
-import { fetchData, getUserLocation, calculateDistance } from "./utils.js";
+import { fetchData, getUserLocation, calculateDistance, updateUserData } from "./utils.js";
 import { applyFilters } from "./filterManager.js";
 let timeoutId = null;
 
@@ -70,6 +70,7 @@ export async function handleLocateInput() {
 	if (timeoutId === null) {
 		try {
 			toiletData.array = await fetchData(urlDatasetPublicToilets, { limit: 20 });
+
 			const userLocation = await getUserLocation();
 
 			calculateDistance(userLocation);
@@ -98,7 +99,7 @@ export function handleFavouriteButtonClick(event) {
 		const toiletId = btn.dataset.for.replace("favourite-location-card-", "");
 		const toilet = toiletData.array.find((toilet) => toilet.id === toiletId);
 
-		if (!toilet.card) return;
+		if (!toilet || !toilet.card) return;
 		if (userData.favourites.find((favourite) => favourite.id === toilet.id)) {
 			// Remove
 			userData.favourites.splice(userData.favourites.indexOf(toilet), 1);

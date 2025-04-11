@@ -2,8 +2,8 @@
 
 import { setUserData } from "./utils.js";
 import sidebar from "./sidebarManager.js";
-import { updateFavourites } from "./favouritesManager.js";
 import { handleLocateInput, handleSortInput, handleSearchInput, handleFilterInput, handleFavouriteButtonClick, handleRemoveButtonClick } from "./inputHandlers.js";
+import { displayResults } from "./resultsDisplay.js";
 
 export const urlDatasetPublicToilets = "https://opendata.brussels.be/api/explore/v2.1/catalog/datasets/toilettes_publiques_vbx/records?limit={LIMIT}";
 export const locateButton = document.querySelector("#locate-button");
@@ -22,7 +22,7 @@ export const filters = {
 	isFree: filterPrice.checked,
 };
 export let userData = setUserData();
-export let toiletData = { array: userData.favourites };
+export let toiletData = { array: [...userData.favourites] };
 
 document.addEventListener("DOMContentLoaded", () => {
 	locateButton.addEventListener("click", handleLocateInput);
@@ -32,9 +32,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	searchFilterContainer.addEventListener("change", handleFilterInput);
 	searchResultsTBody.addEventListener("click", handleFavouriteButtonClick);
 	favouritesContainer.addEventListener("click", handleRemoveButtonClick);
-	userData.favourites.forEach((toilet) => {
-		updateFavourites(toilet);
-	});
+
+	if (toiletData.array) {
+		displayResults();
+		barChartResults.style.display = "none";
+		searchResultsSection.style.display = "block";
+		searchFilterContainer.style.display = "block";
+	}
 
 	sidebar();
 });

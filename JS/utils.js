@@ -1,6 +1,6 @@
 "use strict";
 
-import { locateButton, userData, toiletData } from "./init.js";
+import { userData, toiletData } from "./init.js";
 import { createFavCard } from "./favouritesManager.js";
 
 // Fetch data from the API
@@ -10,18 +10,21 @@ export async function fetchData(url, parameters) {
 	try {
 		const response = await fetch(url);
 		if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-		const data = await response.json();
-		const shortURL = url.replace(/https:\/\/opendata\.brussels\.be\/api\/explore\/v2\.1\/catalog\/datasets\/(.*)\/.*/, "datasets.$1");
 
-		for (const toilet of data.results) {
+		const shortURL = url.replace(/https:\/\/opendata\.brussels\.be\/api\/explore\/v2\.1\/catalog\/datasets\/(.*)\/.*/, "datasets.$1");
+		const data = await response.json();
+		const results = data.results.filter((toilet) => toilet.location !== null);
+
+		for (const toilet of results) {
 			toilet.id = `${shortURL}-toilet-${toilet.objectid}`;
 			toilet.isVisible = true;
 			toilet.distance = null;
 			toilet.origin = shortURL;
 			toilet.card = createFavCard(toilet);
 		}
-		//Removes unusable data from the results
-		return data.results.filter((toilet) => toilet.location !== null);
+
+		// Removes unusable data from the results
+		return results;
 	} catch (error) {
 		console.error(`Error while retrieving the data: ${error.message}`);
 		throw error; // Re-throw the error
