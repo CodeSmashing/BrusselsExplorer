@@ -1,0 +1,6 @@
+Risico-analyse product “kiezen tussen verschillende thema's”,,,,
+Risico,Realisatiekans,Impact,Totaal risico,Beschermende maatregelen.
+Onjuiste toepassing van het gekozen thema,2,1,2,"Test de implementatie grondig en zorg ervoor dat themawijzigingen consistent worden toegepast op alle pagina-elementen."
+Gebrek aan duidelijke visuele indicatie van het huidige thema,1,2,2,"Voeg een visuele indicator toe (zoals een icoon of tekst) om het huidige thema aan te geven."
+Thema-instellingen worden niet opgeslagen of geladen,2,2,4,"Controleer of de thema-instellingen correct worden opgeslagen in en geladen uit `localStorage`. Voeg fallback-mechanismen toe voor standaardwaarden."
+Compatibiliteitsproblemen met oudere browsers,1,2,2,"Gebruik CSS-functies die breed ondersteund worden en test de themafunctionaliteit op verschillende browsers."

@@ -1,1 +1,0 @@
-Intuïtief Brusselaars in verbinding brengen met de toiletten infrastructuur van Brussel

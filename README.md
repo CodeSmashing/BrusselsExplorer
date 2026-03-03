@@ -3,7 +3,7 @@ Dynamic web groepswerk
 
 Website maken waar je toiletten in Brussel kan vinden, sorteren, opslaan...
 
->## Gebruikte datasets: 
+>## Gebruikte datasets:
 >    1. https://opendata.brussels.be/explore/dataset/toilettes_publiques_vbx/information/?disjunctive.status&disjunctive.openinghours&disjunctive.management_en
 >    2. https://opendata.brussels.be/explore/dataset/urinoirs-publics-vbx/information/
 >    3. https://opendata.brussels.be/explore/dataset/bruxelles_canisite/information/?disjunctive.postalcode&disjunctive.territory_fr
@@ -56,16 +56,16 @@ Website maken waar je toiletten in Brussel kan vinden, sorteren, opslaan...
 >> **Voorbeeld uit code:**
 >
 >---
->**Data & API:** 
+>**Data & API:**
 >
 >   - Fetch om data op te halen
 >> **Voorbeeld uit code:** Brussel API
 >
 >   - JSON manipuleren en weergeven
->> **Voorbeeld uit code:** Favorites en userdata bijhouden, opslagen, bijwerken en uitlezen 
+>> **Voorbeeld uit code:** Favorites en userdata bijhouden, opslagen, bijwerken en uitlezen
 >
 >---
->**Opslag & validatie:**  
+>**Opslag & validatie:**
 >   - Formulier validatie
 >> **Voorbeeld uit code:** Invalid input opvangen in search. Als locatietoegang geweigerd word, toegang to sommige dingen beperken om errors te voorkomen.
 >   - Gebruik van LocalStorage
@@ -79,13 +79,13 @@ Website maken waar je toiletten in Brussel kan vinden, sorteren, opslaan...
 
 >## Installatie handleiding
 >   1. Dowload zip file van deze github repository
->   ![Stap 1](README_IMGS/stap1.png)
+>   ![Stap 1](img/stap1.png)
 >   2. Extract de zip file in een folder en open deze via VS code
->   ![Stap 2](README_IMGS/stap2.png)
+>   ![Stap 2](img/stap2.png)
 >   3. Installeer de live-server plugin in VS code
->   ![Stap 2](README_IMGS/stap3.png)
+>   ![Stap 2](img/stap3.png)
 >   4. Start de live-server onderaan je VS code-venster
->   ![Stap 2](README_IMGS/stap4.png)
+>   ![Stap 2](img/stap4.png)
 
 >## Gebruikte bronnen
 >   1. https://opendata.brussels.be
@@ -108,6 +108,6 @@ Website maken waar je toiletten in Brussel kan vinden, sorteren, opslaan...
 >       - README
 >       - Filters
 >       - Barcharts
->       
+>
 >
 

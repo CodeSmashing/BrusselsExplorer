@@ -1,0 +1,6 @@
+Risico-analyse product “Im feeling dangerous”,,,,
+Risico,Realisatiekans,Impact,Totaal risico,Beschermende maatregelen
+Overweldigende hoeveelheid resultaten,2,3,6,Beperk het aantal extra locaties dat wordt toegevoegd of geef de gebruiker opties om de resultaten verder te filteren
+Onjuiste categorisatie van locaties,2,2,4,Controleer de gegevensbron en implementeer validatieregels om ervoor te zorgen dat locaties correct worden gecategoriseerd.
+Gebrek aan duidelijke communicatie,2,1,2,Voeg een duidelijke beschrijving of tooltip toe aan de knop om de functionaliteit uit te leggen.
+Gebruikersvoorkeuren worden genegeerd,2,2,4,Maak de functionaliteit optioneel en zorg ervoor dat gebruikers de extra locaties eenvoudig kunnen uitschakelen.
