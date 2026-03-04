@@ -2,81 +2,81 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BrusselsExplorer</title>
-    <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="icon" type="image/png" href="./IMG/favicon.png" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>BrusselsExplorer</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="icon" type="image/png" href="./img/favicon.png" />
 </head>
 
 <body>
-    <header>
-        <h1>Brussel Toilet Zoeker</h1>
-    </header>
-    <aside class="hidden">
-        <nav>
-            <button class="return"><img src="./IMG/menuIcon.png" alt=">"></button>
-        </nav>
-        <section id="favourites-container">
-            <h2>Favorieten</h2>
-        </section>
-    </aside>
-    <main>
-        <button id="locate-button">Zoek WC's in mijn buurt</button>
-        <div id="search-container">
-            <div id="search-input-container">
-                <input type="text" id="search-input" placeholder="Zoekwoord">
-                <button id="search-button">Zoek</button>
-            </div>
-            <select name="sort-menu" id="sort-menu">
-                <optgroup label="Alphabetical">
-                    <option value="alfa-asc">Alfabetisch ASC</option>
-                    <option value="alfa-desc">Alfabetisch DESC</option>
-                </optgroup>
-                <optgroup label="Afstand">
-                    <option value="distance-asc">Afstand ASC</option>
-                    <option value="distance-desc">Afstand DESC</option>
-                </optgroup>
-            </select>
-            <section id="search-filter-container">
-                <div name="price" class="filter-item">
-                    <input type="checkbox" name="price" id="filter-price">
-                    <label for="filter-price">Gratis</label>
-                </div>
-            </section>
-            <section id="distance-bar-chart-container">
-                <table>
-                    <caption>Afstand-grafiek</caption>
-                    <tbody>
-                        <table class="distance-bar-chart">
+	<header>
+		<h1>Brussel Toilet Searcher</h1>
+	</header>
+	<aside class="hidden">
+		<nav>
+			<button class="return"><img src="./img/menuIcon.png" alt=">"></button>
+		</nav>
+		<section id="favourites-container">
+			<h2>Favourites</h2>
+		</section>
+	</aside>
+	<main>
+		<button id="locate-button">Search restrooms's in my area</button>
+		<div id="search-container">
+			<div id="search-input-container">
+				<input type="text" id="search-input" placeholder="Zoekwoord">
+				<button id="search-button">Search</button>
+			</div>
+			<select name="sort-menu" id="sort-menu">
+				<optgroup label="Alphabetical">
+					<option value="alfa-asc">Alphabetical ascending</option>
+					<option value="alfa-desc">Alphabetical descending</option>
+				</optgroup>
+				<optgroup label="Afstand">
+					<option value="distance-asc">Distance ascending</option>
+					<option value="distance-desc">Distance descending</option>
+				</optgroup>
+			</select>
+			<section id="search-filter-container">
+				<div name="price" class="filter-item">
+					<input type="checkbox" name="price" id="filter-price">
+					<label for="filter-price">Free</label>
+				</div>
+			</section>
+			<section id="distance-bar-chart-container">
+				<table>
+					<caption>Distance-graph</caption>
+					<tbody>
+						<table class="distance-bar-chart">
 
-                        </table>
-                    </tbody>
-                </table>
-            </section>
-            <section id="search-results">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Locatie</th>
-                            <th>Prijs</th>
-                            <th>Openingsuren</th>
-                            <th>Eigenaar</th>
-                            <th>Distance</th>
-                            <th>Favoriet</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </section>
-        </div>
-    </main>
-    <footer>
+						</table>
+					</tbody>
+				</table>
+			</section>
+			<section id="search-results">
+				<table>
+					<thead>
+						<tr>
+							<th>Location</th>
+							<th>Price</th>
+							<th>Opening hours</th>
+							<th>Owner</th>
+							<th>Distance</th>
+							<th>Favourite</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</section>
+		</div>
+	</main>
+	<footer>
 
-    </footer>
+	</footer>
 </body>
 
-<script type="module" src="./JS/init.js"></script>
+<script type="module" src="./js/init.js"></script>
 <!--
 <script>
     (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({

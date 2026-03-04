@@ -38,10 +38,10 @@ export function getUserLocation() {
 			(position) => {
 				const lat = position.coords.latitude;
 				const long = position.coords.longitude;
-		
+
 				userData.currentLocation = { lat, long };
 				updateUserData();
-		
+
 				console.info("Location fetched");
 				resolve(userData.currentLocation);
 			},

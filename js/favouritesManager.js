@@ -2,7 +2,7 @@
 
 import { searchResultsTBody, favouritesContainer } from "./init.js";
 
-// Updates the favorites
+// Updates the favourites
 export function updateFavourites(toilet, favBtn = null) {
 	if (!favBtn) favBtn = searchResultsTBody.querySelector(`button[data-for='favourite-location-card-${toilet.id}']`);
 	const oldCard = favouritesContainer.querySelector(`#favourite-location-card-${toilet.id}`);

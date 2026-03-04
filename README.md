@@ -1,113 +1,138 @@
 # BrusselsExplorer
-Dynamic web groepswerk
 
-Website maken waar je toiletten in Brussel kan vinden, sorteren, opslaan...
+Group work for the subject Dynamic Web.
+Making a website where you can find toilets in Brussel, sort, save...
 
->## Gebruikte datasets:
->    1. https://opendata.brussels.be/explore/dataset/toilettes_publiques_vbx/information/?disjunctive.status&disjunctive.openinghours&disjunctive.management_en
->    2. https://opendata.brussels.be/explore/dataset/urinoirs-publics-vbx/information/
->    3. https://opendata.brussels.be/explore/dataset/bruxelles_canisite/information/?disjunctive.postalcode&disjunctive.territory_fr
->    4. https://opendata.brussels.be/explore/dataset/bruxelles_parcs_et_jardins/information/
->    5. Google maps API (met datasets van de Brussel API op upgeload)
+## Used datasets
 
-## Technische vereisten
->**DOM manipulatie:**
->
->   - Elementen selecteren
->> **Voorbeeld uit code:** User input (search, add to favorites, filters, sorteren...) op te halen.
->
->   - Elementen manipuleren
->> **Voorbeeld uit code:** Favorites op te slaan, zoekresultaten te tonen, thema aan te passen...
->
->   - Events aan elementen koppelen
->> **Voorbeeld uit code:** Favorites buttons, search button, side menu openen/sluiten, thema en taal aanpassen...
->
->---
->**Modern JavaScript:**
->
->   - Gebruik van constanten
->> **Voorbeeld uit code:** Alle buttons en divs die niet veranderen, halen we in het begin van onze code op als constanten.
->
->   - Template literals
->> **Voorbeeld uit code:** Om automatisch unieke ids te geven aan bepaalde html elementen (elke favoriete div heeft een unieke id die gelinkt is aan de inhoud).
->
->   - Iteratie over arrays
->> **Voorbeeld uit code:** Om de datasets uit te lezen en in een tabel te tonen. Om user favorites in een lijst te tonen.
->
->   - Array methodes
->> **Voorbeeld uit code:** Zoekfunctie en sorteren van resultaten.
->
->   - Arrow functions
->> **Voorbeeld uit code:** Functies in eventlisteners te maken
->
->   - Conditional (ternary) operator (moderne if..else)
->> **Voorbeeld uit code:** Om tussen states te switchen in objects (Gratis of niet, visible of niet...)
->
->   - Callback functions
->> **Voorbeeld uit code:** /
->
->   - Promises
->> **Voorbeeld uit code:** Bij de het fetchen van de API data
->
->   - Async & Await
->> **Voorbeeld uit code:** Om pas dingen to doen met de data, zodra deze geladen is
->
->   - Observer API (1 is voldoende)
->> **Voorbeeld uit code:**
->
->---
->**Data & API:**
->
->   - Fetch om data op te halen
->> **Voorbeeld uit code:** Brussel API
->
->   - JSON manipuleren en weergeven
->> **Voorbeeld uit code:** Favorites en userdata bijhouden, opslagen, bijwerken en uitlezen
->
->---
->**Opslag & validatie:**
->   - Formulier validatie
->> **Voorbeeld uit code:** Invalid input opvangen in search. Als locatietoegang geweigerd word, toegang to sommige dingen beperken om errors te voorkomen.
->   - Gebruik van LocalStorage
->> **Voorbeeld uit code:** Favorieten, locatie worden allemaal bijgehouden in een object in de localstorage.
->
->---
->**Styling & layout:**
->   - Basis HTML layout (flexbox of CSS grid kan hiervoor worden gebruikt)
->   - Basis CSS
->   - Gebruiksvriendelijke elementen (verwijderknoppen, icoontjes,...)
+**OpenData.Brussels**:
 
->## Installatie handleiding
->   1. Dowload zip file van deze github repository
->   ![Stap 1](img/stap1.png)
->   2. Extract de zip file in een folder en open deze via VS code
->   ![Stap 2](img/stap2.png)
->   3. Installeer de live-server plugin in VS code
->   ![Stap 2](img/stap3.png)
->   4. Start de live-server onderaan je VS code-venster
->   ![Stap 2](img/stap4.png)
+1. [Public toilets](https://opendata.brussels.be/explore/dataset/toilettes_publiques_vbx/information/?disjunctive.status&disjunctive.openinghours&disjunctive.management_en)
+2. [Public urinals](https://opendata.brussels.be/explore/dataset/urinoirs-publics-vbx/information/)
+3. [Dog toilets](https://opendata.brussels.be/explore/dataset/bruxelles_canisite/information/?disjunctive.postalcode&disjunctive.territory_fr)
+4. [Public parks](https://opendata.brussels.be/explore/dataset/parcs_et_jardins_publics/information/)
 
->## Gebruikte bronnen
->   1. https://opendata.brussels.be
->   2. https://www.stackoverflow.com
->   3. https://www.w3schools.com/
->   4. https://www.google.com
->   5. https://canvas.ehb.be/courses/38344 - Cursus Dynamic Web
->   6. https://stackoverflow.com/questions/639695/how-to-convert-latitude-or-longitude-to-meters
+**Google:**
 
->## Taakverdeling
->   ### Bruno
->       - HTML structure
->       - JS favorites
->       - CSS styling
->       - Search function
->       - Sorting
->   ### Niels
->       - JS calculate distance
->       - CSS styling
->       - README
->       - Filters
->       - Barcharts
->
->
+1. Google maps API (met datasets van de Brussel API op upgeload)
 
+## Technical requirements
+
+**DOM manipulation:**
+
+- Select elements
+**Code example:** Get user input (search terms, add to favourites, filters, sorting...).
+
+- Manipulate elements
+**Code example:** Saving favourites, show search results, adjust the theme when requested...
+
+- Connect events to elements
+**Code example:** Favourites buttons, search button, side menu open/close, adjust theme and language...
+
+---
+
+**Modern JavaScript:**
+
+- Using Constants
+**Code example:** We retrieve all buttons and divs that don't change as constants at the beginning of our code.
+
+- Template Literals
+**Code example:** To automatically assign unique IDs to certain HTML elements (each favourite div has a unique ID linked to its content).
+
+- Iterating over arrays
+**Code example:** To read the datasets and display them in a table. To display user favourites in a list.
+
+- Array methods
+**Code example:** Search function and sorting of results.
+
+- Arrow functions
+**Code example:** To create functions in event listeners.
+
+- Conditional (ternary) operator (modern if..else)
+**Code example:** To switch between states in objects (free or not, visible or not...).
+
+- Callback functions
+**Code example:** /
+
+- Promises
+**Code example:** When fetching API data.
+
+- Async & Await
+**Code example:** To only do things with the data once it has been loaded.
+
+- Observer API (1 is sufficient)
+**Code example:** /
+
+---
+
+**Data & API:**
+
+- Fetch to retrieve data
+**Code example:** Brussels API.
+
+- Manipulate and display JSON
+**Code example:** Maintain, store, update, and read favourites and user data.
+
+---
+
+**Storage & Validation:**
+
+- Form Validation
+**Code example**: Catch invalid input in search. If location access is denied, restrict access to certain items to prevent errors.
+
+- Using Local-storage
+**Code example**: Favourites and locations are all stored in an object in local (browser) storage.
+
+---
+
+**Styling & layout:**
+
+- Basic HTML layout (flexbox or CSS grid can be used)
+- Basic CSS
+- User-friendly elements (delete buttons, icons, etc.)
+
+## Installation manual
+
+1. Download the .zip file from this GitHub repository.
+![Step 1](img/step1.png)
+
+2. Extract the .zip file to a folder and open it via VS Code
+![Step 2](img/step2.png)
+
+3. Install the live server plugin in VS Code
+![Step 3](img/step3.png)
+
+4. Start the live server at the bottom of your VS Code window
+![Step 4](img/step4.png)
+
+## Sources used
+
+**Generally:**
+
+1. [OpenData.Brussels](https://opendata.brussels.be)
+2. [StackOverflow](https://www.stackoverflow.com)
+3. [W3School](https://www.w3schools.com/)
+4. [Google](https://www.google.com)
+5. [Cursus Dynamic Web](https://canvas.ehb.be/courses/38344)
+
+**StackOverflow:**
+
+1. [Latitude or longitude to meters](https://stackoverflow.com/questions/639695/how-to-convert-latitude-or-longitude-to-meters)
+
+## Division of tasks
+
+### Bruno
+
+- HTML structure
+- JS favourites
+- CSS styling
+- Search function
+- Sorting
+
+### Niels
+
+- JS calculate distance
+- CSS styling
+- README
+- Filters
+- Bar charts

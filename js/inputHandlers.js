@@ -75,15 +75,15 @@ export async function handleLocateInput() {
 
 			calculateDistance(userLocation);
 			displayBarCharts();
-	
+
 			timeoutId = setTimeout(() => {
-				locateButton.textContent = "Zoek WC's in mijn buurt";
+				locateButton.textContent = "Search restrooms's in my area";
 				timeoutId = null;
 			}, 2000);
 		} catch (error) {
 			if (error.code === 1 && error.constructor.name === "GeolocationPositionError") {
 				console.error("Location acces denied:", error.message);
-				locateButton.textContent = "Geen locatietoegang, geef toegang tot uw locatie en probeer opnieuw.";
+				locateButton.textContent = "No location access, please provide access to your location and try again.";
 			} else {
 				console.error("Error in handleLocateInput:", error.message);
 			}
